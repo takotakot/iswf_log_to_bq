@@ -1,0 +1,8 @@
+# README
+
+## License
+
+These codes are licensed under CC0 (CC0-1.0) or MIT.
+
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed.ja)  
+[MIT](https://opensource.org/licenses/MIT) (If you need, use `Copyright (c) 2023- takotakot`.)

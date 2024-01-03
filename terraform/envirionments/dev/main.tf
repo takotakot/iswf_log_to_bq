@@ -24,3 +24,13 @@ module "unzip" {
   source_archive_bucket = google_storage_bucket_object.funciton-template-gcs-archive.bucket
   source_archive_object = google_storage_bucket_object.funciton-template-gcs-archive.name
 }
+
+module "untar" {
+  source                = "../../modules/untar"
+  tar_bucket            = "${local.project_id}_tgz"
+  output_bucket         = "${local.project_id}_csv"
+  source_topic_id       = module.unzip.output_topic.id
+  notify_topic          = local.untar_notify_topic
+  source_archive_bucket = google_storage_bucket_object.funciton-template-gcs-archive.bucket
+  source_archive_object = google_storage_bucket_object.funciton-template-gcs-archive.name
+}

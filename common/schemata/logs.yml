@@ -1,0 +1,46 @@
+- name: request_time
+  type: TIMESTAMP
+  mode: REQUIRED
+- name: protocol
+  type: STRING
+  mode: REQUIRED
+- name: group_name
+  type: STRING
+  mode: REQUIRED
+- name: account_name
+  type: STRING
+  mode: REQUIRED
+- name: transfer_status
+  type: STRING
+  mode: REQUIRED
+  # Proxied, Confirm, Blocked, Allowed, Release, CfmPost, BlkPost
+- name: status_code
+  type: INT64
+  mode: REQUIRED
+- name: fqdn
+  type: STRING
+  mode: REQUIRED
+- name: transfer_time_ms
+  type: INT64
+  mode: REQUIRED
+- name: request_length
+  type: INT64
+  mode: REQUIRED
+- name: response_length
+  type: INT64
+  mode: REQUIRED
+- name: file_type # mine_type AS file_type
+  type: STRING
+  mode: NULLABLE
+- name: content_type
+  type: STRING
+  mode: NULLABLE
+- name: categorization_reason # determination_reason
+  type: STRING
+  mode: REQUIRED
+- name: determination_category
+  type: STRING
+  mode: REQUIRED
+- name: request_url
+  type: STRING
+  mode: REQUIRED

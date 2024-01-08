@@ -5,6 +5,11 @@ resource "google_project_service" "functions" {
   disable_on_destroy = false
 }
 
+resource "google_project_service" "run" {
+  service            = "run.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_project_service" "cloudbuild" {
   service            = "cloudbuild.googleapis.com"
   disable_on_destroy = false
@@ -62,6 +67,7 @@ resource "google_bigquery_dataset_iam_member" "logs" {
 resource "google_cloudfunctions2_function" "default" {
   depends_on = [
     google_project_service.functions,
+    google_project_service.run,
     google_project_service.cloudbuild,
     google_project_service.eventarc,
     google_project_iam_member.event-receiving,

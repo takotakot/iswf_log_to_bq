@@ -10,6 +10,11 @@ resource "google_project_service" "cloudbuild" {
   disable_on_destroy = false
 }
 
+resource "google_project_service" "eventarc" {
+  service            = "eventarc.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_service_account" "default" {
   account_id   = "untar-function-sa"
   display_name = "Untar Fuction Service Account"
@@ -72,6 +77,7 @@ resource "google_cloudfunctions2_function" "default" {
   depends_on = [
     google_project_service.functions,
     google_project_service.cloudbuild,
+    google_project_service.eventarc,
     google_project_iam_member.event-receiving,
     google_project_iam_member.artifactregistry-reader,
   ]

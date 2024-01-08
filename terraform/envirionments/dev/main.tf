@@ -34,3 +34,9 @@ module "untar" {
   source_archive_bucket = google_storage_bucket_object.funciton-template-gcs-archive.bucket
   source_archive_object = google_storage_bucket_object.funciton-template-gcs-archive.name
 }
+
+module "bigquery" {
+  source        = "../../modules/bigquery"
+  dataset_id    = "logs"
+  logs_table_id = "logs"
+}

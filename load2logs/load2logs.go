@@ -15,11 +15,14 @@ import (
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
 	"github.com/cloudevents/sdk-go/v2/event"
 	"github.com/google/uuid"
+	"github.com/googleapis/google-cloudevents-go/cloud/storagedata"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 func init() {
 	// Register a CloudEvent function with the Functions Framework
 	functions.CloudEvent("HandleLoadEvent", HandleLoadEvent)
+	functions.CloudEvent("HandleLogLoadEvent", HandleLogLoadEvent)
 }
 
 type MessagePublishedData struct {
@@ -79,6 +82,32 @@ func HandleLoadEvent(ctx context.Context, e event.Event) error {
 	}
 
 	srcFileId := "gs://" + fileInfo.Bucket + "/" + fileInfo.FilePath
+
+	client, err := bigquery.NewClient(ctx, envConfig.ProjectID)
+	if err != nil {
+		log.Printf("Failed to create client: %v", err)
+		return fmt.Errorf("bigquery.NewClient: %v", err)
+	}
+	defer client.Close()
+
+	realClient := &common.RealBigQueryClient{Client: client}
+
+	return Load2Bq(ctx, realClient, srcFileId, envConfig.DatasetID, envConfig.TableID)
+}
+
+func HandleLogLoadEvent(ctx context.Context, e event.Event) error {
+	envConfig, err := NewEnvConfig()
+	if err != nil {
+		log.Printf("Failed to load EnvConfig: %v", err)
+		return fmt.Errorf("EnvConfig: %v", err)
+	}
+
+	var eventData storagedata.StorageObjectData
+	if err := protojson.Unmarshal(e.Data(), &eventData); err != nil {
+		return fmt.Errorf("protojson.Unmarshal: %w", err)
+	}
+
+	srcFileId := "gs://" + eventData.GetBucket() + "/" + eventData.GetName()
 
 	client, err := bigquery.NewClient(ctx, envConfig.ProjectID)
 	if err != nil {

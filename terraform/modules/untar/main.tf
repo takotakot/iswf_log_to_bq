@@ -92,6 +92,7 @@ resource "google_cloudfunctions2_function" "default" {
       service_config[0].service,
       service_config[0].service_account_email,
       build_config[0].entry_point,
+      build_config[0].docker_repository,
     ]
   }
 

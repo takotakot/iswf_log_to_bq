@@ -50,3 +50,12 @@ module "load2logs" {
   source_archive_bucket = google_storage_bucket_object.funciton-template-gcs-archive.bucket
   source_archive_object = google_storage_bucket_object.funciton-template-gcs-archive.name
 }
+
+module "bucket2logs" {
+  source                = "../../modules/bucket2logs"
+  log_bucket            = "${local.project_id}_log"
+  dataset_id            = "logs"
+  logs_table_id         = "logs"
+  source_archive_bucket = google_storage_bucket_object.funciton-template-gcs-archive.bucket
+  source_archive_object = google_storage_bucket_object.funciton-template-gcs-archive.name
+}

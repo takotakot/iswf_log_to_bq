@@ -5,7 +5,7 @@ go 1.21.5
 require (
 	cloud.google.com/go/storage v1.36.0
 	github.com/GoogleCloudPlatform/functions-framework-go v1.8.0
-	github.com/cloudevents/sdk-go/v2 v2.14.0
+	github.com/cloudevents/sdk-go/v2 v2.15.2
 	github.com/stretchr/testify v1.8.4
 	github.com/takotakot/iswf_log_to_bq/common/go v0.0.0-20240108075544-4dc74fd5d075
 	golang.org/x/sync v0.6.0
@@ -39,7 +39,6 @@ require (
 	go.opentelemetry.io/otel v1.21.0 // indirect
 	go.opentelemetry.io/otel/metric v1.21.0 // indirect
 	go.opentelemetry.io/otel/trace v1.21.0 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.26.0 // indirect
 	golang.org/x/crypto v0.17.0 // indirect

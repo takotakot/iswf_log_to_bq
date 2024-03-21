@@ -10,7 +10,7 @@ require (
 	github.com/stretchr/testify v1.8.4
 	github.com/takotakot/iswf_log_to_bq/common/go v0.0.0-20240108075544-4dc74fd5d075
 	golang.org/x/sync v0.6.0
-	google.golang.org/protobuf v1.32.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (

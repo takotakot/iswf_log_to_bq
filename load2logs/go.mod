@@ -10,7 +10,7 @@ require (
 	github.com/googleapis/google-cloudevents-go v0.7.1
 	github.com/stretchr/testify v1.8.4
 	github.com/takotakot/iswf_log_to_bq/common/go v0.0.0-20240108100911-d3e2e1b6eb35
-	google.golang.org/protobuf v1.32.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (

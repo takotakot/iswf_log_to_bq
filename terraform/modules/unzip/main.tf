@@ -71,15 +71,15 @@ resource "google_project_iam_member" "artifactregistry-reader" {
 }
 
 resource "google_storage_bucket_iam_member" "object-input" {
-  bucket     = google_storage_bucket.zip_bucket.name
-  role       = "roles/storage.objectUser"
-  member     = "serviceAccount:${google_service_account.default.email}"
+  bucket = google_storage_bucket.zip_bucket.name
+  role   = "roles/storage.objectUser"
+  member = "serviceAccount:${google_service_account.default.email}"
 }
 
 resource "google_storage_bucket_iam_member" "object-output" {
-  bucket     = google_storage_bucket.output_bucket.name
-  role       = "roles/storage.objectUser"
-  member     = "serviceAccount:${google_service_account.default.email}"
+  bucket = google_storage_bucket.output_bucket.name
+  role   = "roles/storage.objectUser"
+  member = "serviceAccount:${google_service_account.default.email}"
 }
 
 resource "google_pubsub_topic" "notify_topic" {

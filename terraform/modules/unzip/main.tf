@@ -126,7 +126,8 @@ resource "google_cloudfunctions2_function" "default" {
     }
   }
   service_config {
-    available_memory = "640Mi"
+    available_cpu    = "1000m"
+    available_memory = "2048Mi"
     environment_variables = {
       CONTENT_TOPIC_ID = google_pubsub_topic.notify_topic.name
       DEST_BUCKET_NAME = google_storage_bucket.output_bucket.name

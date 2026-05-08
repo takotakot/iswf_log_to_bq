@@ -1,8 +1,6 @@
 module github.com/takotakot/iswf_log_to_bq/common/go
 
-go 1.24.0
-
-toolchain go1.24.1
+go 1.25
 
 require (
 	cloud.google.com/go/bigquery v1.57.1
@@ -16,7 +14,7 @@ require (
 	cloud.google.com/go/iam v1.1.5 // indirect
 	github.com/andybalholm/brotli v1.0.6 // indirect
 	github.com/apache/arrow/go/v12 v12.0.1 // indirect
-	github.com/apache/thrift v0.19.0 // indirect
+	github.com/apache/thrift v0.23.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
